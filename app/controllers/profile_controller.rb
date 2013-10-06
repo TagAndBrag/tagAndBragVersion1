@@ -43,21 +43,21 @@ class ProfileController < ActionController::Base
  end
 
  def points_to_next_level(current_points)
-   next_level = current_points/10 + 1
-   next_level_points = (next_level * 100) - (current_points * 10)
+   next_level = current_points/100 + 1
+   next_level_points = (next_level*100) - (current_points)
  end
 
  def belt_colour
    colour = DealInfo.get_belt
  end
 
- def suggestion_for_next_level
-   suggestion = [ "Buy a new deal",
-     "share status of deal on facebook and twitter",
-     "refer a friend for groupon",
-     "give feedback for groupon deals",
-     "download groupon app",
-     "feedback for groupon app"
-   ]
- end
+ #def suggestion_for_next_level
+ #  suggestion = [ "Buy a new deal",
+ #    "share status of deal on facebook and twitter",
+ #    "refer a friend for groupon",
+ #    "give feedback for groupon deals",
+ #    "download groupon app",
+ #    "feedback for groupon app"
+ #  ]
+ #end
 end

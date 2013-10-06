@@ -27,15 +27,8 @@ class DealInfo < ActiveRecord::Base
 
 
   def self.current_points
-
-    deal_prices = DealInfo.select("price")
-
+    deal_prices = DealInfo.select('price')
     total_amount = get_amount(deal_prices)
-
-    points = total_amount/10
-
-    points
-
-
+    total_amount
   end
 end
