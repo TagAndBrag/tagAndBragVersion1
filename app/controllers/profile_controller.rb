@@ -5,30 +5,21 @@ class ProfileController < ActionController::Base
   #include 'PopluateData'
  
  def index
-  @points = current_points
+  @level_point = current_points
+  @points = @level_point%100
   @next_level_points = points_to_next_level(@points)
-  @belt_number = belt_colour
+  @belt_number = belt_colour+1
+  if @level_point < 200 
+    @level = "Experienced"
+  else
+    @level = "Skilled"
+  end
   #PopluateData.populate()
-#   session = GoogleDrive.login("GeekOn.chennai@gmail.com","GeekOnChennai" )
-#   ws = session.spreadsheet_by_title('Copy of TimelineJS Template').worksheets[0]
-#   count = 2;
-#  debugger
-#   pop = DealInfo.all
- 
-#   #pop.each do |row|
-#   ws[count,1] = pop[0].created_at
-#   #ws[count][2] = 
-#   ws[count,3] = pop[0].title
-#   ws[count,4] = pop[0].description
-#   ws[count,5] = pop[0].imageLink
-#   ws[count,6] = pop[0].price.to_i
-#   ws[count,7] = pop[0].imageLink
-#   ws[count,8] = pop[0].imageLink
-
-#   #count++
+  
+  #count++
 
 
-#   #end
+  #end
   
  
 
