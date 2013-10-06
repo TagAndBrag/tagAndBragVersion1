@@ -75,6 +75,45 @@ background-color:#7A991A;
           e.style.display = 'block';
     }
 </script>
+<script type="text/javascript" src="progressbar.js"></script>
+<script type="text/javascript" src="preview.js"></script>
+
+
+<script type="text/javascript">
+
+var myProgressBar = null
+var timerId = null
+
+function loadProgressBar(){
+  myProgressBar = new ProgressBar("progressbar_0_1",{
+    borderRadius: 100,
+    width: 400,
+    height: 100,
+    maxValue: 40,
+    labelText: "Loaded in {value,0} %",
+    orientation: ProgressBar.Orientation.Horizontal,
+    direction: ProgressBar.Direction.LeftToRight,
+    animationStyle: ProgressBar.AnimationStyle.LeftToRight1,
+    animationSpeed: 1.5,
+    imageUrl: 'images/v_fg12.png',
+    backgroundUrl: 'images/h_bg2.png',
+    markerUrl: 'images/marker2.png'
+  });
+  
+  timerId = window.setInterval(function() {
+    if (myProgressBar.value >= myProgressBar.maxValue)
+      myProgressBar.setValue(0);
+    else
+      myProgressBar.setValue(myProgressBar.value+1);
+    
+  },
+  100);
+}
+
+loadProgressBar();
+</script>
+
+
 
     <script>
       BOOMR = {};
@@ -535,6 +574,9 @@ background-color:#7A991A;
   <div>
     <img src="http://images.wikia.com/battlefordreamislandfanfiction/images/d/d5/Karate_Belt.png" alt="Smiley face" width="42" height="42">
     <a class='testing' href="#" onclick="toggle_visibility('content_test');">Belt Points: <%= @points %></a>
+
+<div id="progressbar_0_1" style="position: relative; top: 45%; margin: 0px auto; width: 302px; height: 22px;" class="progressbar_parent"><div class="progressbar_background" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; float: left; display: inline-block; width: 302px; height: 20px; background-image: url(http://s3.envato.com/files/2526201/images/h_bg2.png); position: relative; top: 1px;"></div><div class="progressbar_left" style="float: left; display: inline-block; background-image: url(http://s3.envato.com/files/2526201/images/v_fg12.png); position: relative; width: 10px; height: 20px; top: -20px; left: 0px; border-right-style: none; border-top-left-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 10px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></div><div class="progressbar_middle" style="float: left; display: inline-block; margin: 0px; overflow: hidden; position: relative; width: 280px; height: 20px; top: -20px; border-left-style: none; border-right-style: none;"><div class="" style="background-image: url(http://s3.envato.com/files/2526201/images/v_fg12.png); position: relative; width: 173px; height: 20px;"></div></div><div class="progressbar_right" style="float: right; display: inline-block; background-image: url(http://s3.envato.com/files/2526201/images/v_fg12.png); position: relative; width: 10px; height: 20px; top: -20px; border-left-style: none; border-top-left-radius: 0px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 0px; background-position: -30px 0px; background-repeat: no-repeat no-repeat;"></div><div class="progressbar_marker" style="display: inline-block; zoom: 1; width: 183px; height: 20px; top: -41px; left: 1px; background-image: url(http://s3.envato.com/files/2526201/images/marker2.png); line-height: 20px; position: relative; visibility: visible; opacity: 1; border-top-left-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 10px; background-position: 540px 0px; background-repeat: no-repeat no-repeat;"></div><div class="progressbar_text_horizontal" style="width: 300px; height: 20px; top: -61px; left: 1px; line-height: 20px; position: relative;">Loaded in 61 %</div></div>
+
     <div class= 'hide ex' id='content_test'> 
       <ul style="list-style: none;">
         <li><h2><b>Points To Next Level: <%= @next_level_points %></b></h2></li>
